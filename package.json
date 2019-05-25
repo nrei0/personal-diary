@@ -1,0 +1,55 @@
+{
+  "name": "personal-diary",
+  "version": "0.0.1",
+  "description": "Personal diary",
+  "author": "Andrei Tiurin <pd@ateiri.com>",
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "start": "forever .dist/bff/index.js",
+    "start:dev": "yarn start:dev:bff",
+    "start:dev:bff": "nodemon --inspect --nolazy --require @babel/register src/bff/index.js",
+    "eslint": "./node_modules/.bin/eslint --ext .js src/*",
+    "tscheck": "./node_modules/.bin/tsc",
+    "build": "yarn build:bff",
+    "build:bff": "BABEL_ENV=production babel -d ./.dist/bff ./src/bff"
+  },
+  "pre-commit": [
+    "eslint",
+    "tscheck"
+  ],
+  "dependencies": {
+    "@babel/runtime": "^7.1.5",
+    "@hapi/joi": "^15.0.3",
+    "config": "^3.1.0",
+    "express": "^4.17.0",
+    "forever": "^1.0.0",
+    "ramda": "^0.26.1",
+    "winston": "3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/register": "7",
+    "@types/config": "^0.0.34",
+    "@types/express": "^4.16.1",
+    "@types/hapi__joi": "^15.0.1",
+    "@types/node": "^12.0.2",
+    "@types/ramda": "^0.26.8",
+    "babel-eslint": "^11.0.0-beta.0",
+    "babel-preset-minify": "^0.5.0",
+    "eslint": "^5.10",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-no-null": "^1.0.2",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-sort-class-members": "^1.4.0",
+    "nodemon": "^1.19.0",
+    "pre-commit": "^1.2.2",
+    "typescript": "^3.4.5"
+  }
+}
