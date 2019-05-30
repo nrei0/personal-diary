@@ -6,8 +6,9 @@
     "checkJs": true,
     "noEmit": true,
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "jsx": "react"
   },
-  "include": ["src/bff/index.js"],
+  "include": ["src/client/index.js", "src/bff/index.js"],
   "exclude": ["node_modules"]
 }

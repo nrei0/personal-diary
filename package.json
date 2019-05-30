@@ -6,12 +6,11 @@
   "license": "BSD-3-Clause",
   "scripts": {
     "start": "forever .dist/bff/index.js",
-    "start:dev": "yarn start:dev:bff",
-    "start:dev:bff": "nodemon --inspect --nolazy --require @babel/register src/bff/index.js",
-    "eslint": "./node_modules/.bin/eslint --ext .js src/*",
-    "tscheck": "./node_modules/.bin/tsc",
-    "build": "yarn build:bff",
-    "build:bff": "BABEL_ENV=production babel -d ./.dist/bff ./src/bff"
+    "start:dev": "yarn start:dev:bff & yarn start:dev:client",
+    "start:dev:bff": "forever -w -d -c 'node --inspect -r ./node_modules/@babel/register' src/bff/index.js",
+    "start:dev:client": "webpack-dev-server",
+    "eslint": "eslint --ext .js src/*",
+    "tscheck": "tsc"
   },
   "pre-commit": [
     "eslint",
@@ -24,24 +23,34 @@
     "express": "^4.17.0",
     "forever": "^1.0.0",
     "ramda": "^0.26.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-loadable": "^5.5.0",
     "winston": "3"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
     "@babel/register": "7",
     "@types/config": "^0.0.34",
     "@types/express": "^4.16.1",
     "@types/hapi__joi": "^15.0.1",
     "@types/node": "^12.0.2",
     "@types/ramda": "^0.26.8",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-loadable": "^5.5.1",
     "babel-eslint": "^11.0.0-beta.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
     "babel-preset-minify": "^0.5.0",
     "eslint": "^5.10",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-react": "^1.1.7",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-no-null": "^1.0.2",
@@ -49,6 +58,11 @@
     "eslint-plugin-sort-class-members": "^1.4.0",
     "nodemon": "^1.19.0",
     "pre-commit": "^1.2.2",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "webpack": "^4.32.2",
+    "webpack-assets-manifest": "^3.1.1",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
   }
 }

@@ -5,7 +5,8 @@
     "ecmaFeatures": {
       "sourceType": "module",
       "allowImportExportEverywhere": false,
-      "codeFrame": true
+      "codeFrame": true,
+      "jsx": true
     }
   },
   "plugins": ["sort-class-members", "import", "no-null"],
@@ -49,9 +50,12 @@
         ],
         "accessorPairPositioning": "getThenSet"
       }
-    ]
+    ],
+    "react/jsx-uses-react": 1
   },
+  "globals": { "react": true },
   "env": {
-    "es6": true
+    "es6": true,
+    "browser": true
   }
 }
