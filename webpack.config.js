@@ -2,8 +2,7 @@ const path = require('path');
 
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const outDirectory = '.dist';
 
@@ -51,10 +50,10 @@ module.exports = {
     contentBase: path.join(__dirname, '.dist'),
     compress: true,
     host: '0.0.0.0',
-    port: 9000,
+    port: 8080,
     proxy: {
       context: () => true,
-      target: 'http://127.0.0.1:8080'
+      target: 'http://0.0.0.0:8081'
     },
     disableHostCheck: true,
     writeToDisk: true,

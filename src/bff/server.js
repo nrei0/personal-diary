@@ -4,13 +4,20 @@ import config from 'config';
 import path from 'path';
 
 import { createLogger } from './logger';
-import { univeralMiddleware } from './middleware';
+import { univeralMiddleware, authMiddleware, setAuthRoutes } from './middleware';
 
 /** @typedef { import('http').Server } http.Server */
 /** @typedef { import('winston').Logger } Logger */
 
 // Settings.
-const { port, statsPath, manifestPath } = config.get('bff');
+const {
+  port,
+  statsPath,
+  manifestPath,
+  auth: {
+    google: { clientID, authURL, callbackURL, failureCallbackURL, clientSecret }
+  }
+} = config.get('bff');
 
 /**
  * Stop server.
@@ -32,10 +39,9 @@ export const startServer = ({ process }) => () => {
   const app = express();
   const logger = createLogger({ process });
 
+  app.use(authMiddleware({ clientID, clientSecret, callbackURL }));
+  setAuthRoutes({ app, authURL, callbackURL, failureCallbackURL });
   app.get('/', univeralMiddleware({ statsPath, manifestPath }));
-
-  // tbd @ateiri Express static is very slow, better to look forward of using Nginx intstead.
-  app.use(express.static(path.join(__dirname, '../../.dist')));
 
   Loadable.preloadAll().then(() => {
     const server = app.listen(port, () => logger.info(`BFF listening on :${port}`));

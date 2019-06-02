@@ -1,5 +1,11 @@
 {
   "bff": {
-    "port": "BFF_PORT"
+    "port": "BFF_PORT",
+    "auth": {
+      "google": {
+        "clientID": "G_CLIENT_ID",
+        "clientSecret": "G_CLIENT_SECRET"
+      }
+    }
   }
 }

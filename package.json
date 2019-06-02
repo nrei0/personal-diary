@@ -7,8 +7,8 @@
   "scripts": {
     "start": "forever .dist/bff/index.js",
     "start:dev": "yarn start:dev:bff & yarn start:dev:api & yarn start:dev:client",
-    "start:dev:bff": "forever -w -d --watchIgnore='!{{config, src/client/component/app, src/bff}/**}' -c 'node --inspect -r ./node_modules/@babel/register' src/bff/index.js",
-    "start:dev:api": "forever -w -d --watchDirectory=src/api -c 'node --inspect -r ./node_modules/@babel/register' src/api/index.js",
+    "start:dev:bff": "forever -w -d -c 'node --inspect=8999 -r ./node_modules/@babel/register' src/bff/index.js",
+    "start:dev:api": "forever -w -d -c 'node --inspect=8998 -r ./node_modules/@babel/register' src/api/index.js",
     "start:dev:client": "webpack-dev-server",
     "eslint": "eslint --ext .js src/*",
     "tscheck": "tsc"
@@ -23,6 +23,8 @@
     "config": "^3.1.0",
     "express": "^4.17.0",
     "forever": "^1.0.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
