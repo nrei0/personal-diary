@@ -3,5 +3,8 @@
     "port": "8080",
     "statsPath": "../../../.dist/react-loadable.json",
     "manifestPath": "../../../.dist/manifest.json"
+  },
+  "api": {
+    "port": 8081
   }
 }

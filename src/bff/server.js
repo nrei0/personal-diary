@@ -15,12 +15,11 @@ const { port, statsPath, manifestPath } = config.get('bff');
 /**
  * Stop server.
  *
- * @param {{ server: http.Server, process: NodeJS.Process, logger: Logger }} props Props.
+ * @param {{ server: http.Server, logger: Logger }} props Props.
  */
-export const stopServer = ({ server, process, logger }) => () => {
+export const stopServer = ({ server, logger }) => () => {
   server.close(() => {
-    logger.info('Server successfully terminated');
-    process.exit(1);
+    logger.info('BFF server successfully terminated');
   });
 };
 
@@ -39,12 +38,9 @@ export const startServer = ({ process }) => () => {
   app.use(express.static(path.join(__dirname, '../../.dist')));
 
   Loadable.preloadAll().then(() => {
-    const server = app.listen(port, () =>
-      logger.info(`BFF listening on :${port}`)
-    );
+    const server = app.listen(port, () => logger.info(`BFF listening on :${port}`));
 
-    process.on('SIGINT', stopServer({ server, process, logger }));
-    process.on('SIGTERM', stopServer({ server, process, logger }));
-    process.on('SIGUSR2', stopServer({ server, process, logger }));
+    process.on('SIGINT', stopServer({ server, logger }));
+    process.on('SIGTERM', stopServer({ server, logger }));
   });
 };
