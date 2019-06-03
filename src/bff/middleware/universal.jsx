@@ -6,14 +6,15 @@ import { getBundles } from 'react-loadable/webpack';
 import { App } from '../../client/component/app';
 
 export const univeralMiddleware = ({ statsPath, manifestPath }) => (_, res) => {
-  let modules = [];
+  const modules = [];
   const stats = require(statsPath);
   const manifest = require(manifestPath);
 
   // Main app bundle is part of component chunks and not included here.
-  let scriptPaths = ['vendor.app.js'].map(name => manifest[name]);
+  const scriptPaths = ['vendor.app.js', 'styles.js'].map(name => manifest[name]).filter(Boolean);
+  const linkPaths = ['styles.css'].map(name => manifest[name]).filter(Boolean);
 
-  let html = renderToString(
+  const html = renderToString(
     <Loadable.Capture report={moduleName => modules.push(moduleName)}>
       <App />
     </Loadable.Capture>
@@ -26,16 +27,15 @@ export const univeralMiddleware = ({ statsPath, manifestPath }) => (_, res) => {
   <!doctype html>
   <html lang="en">
     <head>
+      ${linkPaths
+        .map(path => `<link href="/${path}" rel="stylesheet" type="text/css" />`)
+        .join('\n')}
       ${scriptPaths.map(path => `<script src="/${path}"></script>`).join('\n')}
       <title>hola world</title>
     </head>
     <body>
       <div id="app">${html}</div>
-      ${bundles
-        .map(bundle => {
-          return `<script src="/${bundle.file}"></script>`;
-        })
-        .join('\n')}
+      ${bundles.map(bundle => `<script src="/${bundle.file}"></script>`).join('\n')}
     </body>
   </html>
 `);

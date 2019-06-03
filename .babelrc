@@ -1,5 +1,5 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "presets": ["@babel/preset-env"],
   "plugins": [
     [
       "@babel/plugin-transform-runtime",
@@ -16,12 +16,29 @@
         "loose": false
       }
     ],
-    "dynamic-import-node",
-    "@babel/plugin-syntax-dynamic-import",
-    "react-loadable/babel"
+    "@babel/plugin-syntax-dynamic-import"
   ],
   "sourceMaps": true,
   "env": {
+    "front_dev": {
+      "presets": ["@babel/preset-react"],
+      "plugins": ["react-loadable/babel"]
+    },
+    "bff_dev": {
+      "presets": ["@babel/preset-react"],
+      "plugins": [
+        "react-loadable/babel",
+        "dynamic-import-node",
+        [
+          "css-modules-transform",
+          {
+            "devMode": true,
+            "extensions": [".scss"],
+            "generateScopedName": "[local]__[hash:base64:8]"
+          }
+        ]
+      ]
+    },
     "production": {
       "presets": ["minify"],
       "comments": false

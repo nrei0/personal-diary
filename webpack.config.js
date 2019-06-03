@@ -1,8 +1,10 @@
 const path = require('path');
-
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const postcssPresetEnv = require('postcss-preset-env');
 
 const outDirectory = '.dist';
 
@@ -23,6 +25,31 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[local]__[hash:base64:8]',
+              sourceMap: true,
+              importLoaders: 1
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [postcssPresetEnv({ autoprefixer: { grid: true } })]
+            }
+          },
+          { loader: 'sass-loader', options: { sourceMap: true } }
+        ]
       }
     ]
   },
@@ -35,16 +62,27 @@ module.exports = {
           chunks: 'initial',
           priority: 1,
           minSize: 120000
+        },
+        styles: {
+          name: 'styles',
+          test: /\.scss$/,
+          chunks: 'all',
+          enforce: true
         }
       }
     }
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new ReactLoadablePlugin({ filename: './.dist/react-loadable.json' }),
     new WebpackAssetsManifest({ output: './.dist/manifest.json' }),
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[hash].[name].css'
+    })
   ],
   mode: 'development',
+  devtool: 'inline-cheap-source-map',
   devServer: {
     historyApiFallback: true,
     contentBase: path.join(__dirname, '.dist'),
