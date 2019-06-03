@@ -9,7 +9,7 @@ const postcssPresetEnv = require('postcss-preset-env');
 const outDirectory = '.dist';
 
 module.exports = {
-  entry: { app: './src/client' },
+  entry: { app: './index.jsx' },
   output: {
     filename: '[chunkhash].app.js',
     path: path.resolve(__dirname, outDirectory)

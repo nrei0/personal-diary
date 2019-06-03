@@ -9,6 +9,6 @@
     "esModuleInterop": true,
     "jsx": "react"
   },
-  "include": ["src/client/index.js", "src/bff/index.js", "src/api/index.js"],
+  "include": ["src/front", "src/bff", "src/api"],
   "exclude": ["node_modules"]
 }

@@ -7,13 +7,8 @@ const cn = classNames.bind(styles);
 
 export const Page = ({ children }) => <div className={cn('page')}>{children}</div>;
 
-export const withPage = () => WrapperComponent =>
-  class extends React.Component {
-    render() {
-      return (
-        <Page>
-          <WrapperComponent {...this.props} />
-        </Page>
-      );
-    }
-  };
+export const withPage = () => WrapperComponent => props => (
+  <Page>
+    <WrapperComponent {...props} />
+  </Page>
+);

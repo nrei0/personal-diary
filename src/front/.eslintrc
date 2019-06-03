@@ -2,11 +2,15 @@
   "extends": ["airbnb"],
   "parser": "babel-eslint",
   "parserOptions": {
+    "ecmaVersion": 6,
     "ecmaFeatures": {
       "sourceType": "module",
       "allowImportExportEverywhere": false,
       "codeFrame": true,
       "jsx": true
+    },
+    "babelOptions": {
+      "configFile": "./src/front/.babelrc"
     }
   },
   "plugins": ["sort-class-members", "import", "no-null"],
@@ -51,7 +55,8 @@
         "accessorPairPositioning": "getThenSet"
       }
     ],
-    "react/jsx-uses-react": 1
+    "react/jsx-uses-react": 1,
+    "react/prop-types": 0
   },
   "globals": { "react": true },
   "env": {
