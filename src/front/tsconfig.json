@@ -9,6 +9,7 @@
     "esModuleInterop": true,
     "jsx": "react"
   },
-  "include": ["src/front", "src/bff", "src/api"],
-  "exclude": ["node_modules"]
+  "files": ["./../../typing/index.d.ts"],
+  "include": ["./index.jsx"],
+  "exclude": ["node_modules", "*.scss"]
 }

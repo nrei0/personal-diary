@@ -1,0 +1,38 @@
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": false,
+        "helpers": true,
+        "regenerator": true,
+        "useESModules": false
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": false
+      }
+    ],
+    "@babel/plugin-syntax-dynamic-import",
+    "react-loadable/babel",
+    "dynamic-import-node",
+    [
+      "css-modules-transform",
+      {
+        "devMode": true,
+        "extensions": [".scss"],
+        "generateScopedName": "[local]__[hash:base64:8]"
+      }
+    ]
+  ],
+  "sourceMaps": true,
+  "env": {
+    "production": {
+      "presets": ["minify"],
+      "comments": false
+    }
+  }
+}

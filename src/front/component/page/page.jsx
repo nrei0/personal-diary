@@ -1,12 +1,20 @@
 import React from 'react';
-import classNames from 'classnames/bind';
+import cn from 'classnames';
 
 import styles from './page.scss';
 
-const cn = classNames.bind(styles);
+/**
+ * Page component.
+ *
+ * @param {{ children: React.FunctionComponentElement<any> }} props Props.
+ */
+export const Page = ({ children }) => <div className={cn(styles.page)}>{children}</div>;
 
-export const Page = ({ children }) => <div className={cn('page')}>{children}</div>;
-
+/**
+ * Page HOC component.
+ *
+ * @returns {function(React.FunctionComponent): React.FunctionComponent}
+ */
 export const withPage = () => WrapperComponent => props => (
   <Page>
     <WrapperComponent {...props} />
