@@ -1,7 +1,7 @@
 /**
  * App shell component.
  *
- * @param {{ children: React.Component }} props Props.
- * @returns {React.Component}
+ * @param {{ children: React.FunctionComponentElement<any> }} props Props.
+ * @returns {React.FunctionComponentElement<any>}
  */
 export const AppShell = ({ children }) => children;

@@ -11,6 +11,6 @@ const AuthPage = Loadable({
 
 export const App = () => (
   <AppShell>
-    <AuthPage>
+    <AuthPage />
   </AppShell>
 );
