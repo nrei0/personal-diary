@@ -7,7 +7,7 @@
   "license": "BSD-3-Clause",
   "scripts": {
     "start:dev": "nodemon -e js --watch './src/*' --exec 'node --inspect=8998 -r ./.babel.register.js' ./src/index.js",
-    "eslint": "eslint --ext .js ./src/*",
+    "lint": "eslint --ext .js ./src/*",
     "tsc": "tsc"
   },
   "dependencies": {

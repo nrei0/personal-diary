@@ -9,17 +9,17 @@
     "start:dev:bff": "yarn workspace @pd/bff start:dev",
     "start:dev:api": "yarn workspace @pd/api start:dev",
     "start:dev:front": "yarn workspace @pd/front start:dev",
-    "eslint": "yarn eslint:front && yarn eslint:bff && yarn eslint:api",
-    "eslint:front": "yarn workspace @pd/front eslint",
-    "eslint:bff": "yarn workspace @pd/bff eslint",
-    "eslint:api": "yarn workspace @pd/api eslint",
+    "lint": "yarn lint:front && yarn lint:bff && yarn lint:api",
+    "lint:front": "yarn workspace @pd/front lint",
+    "lint:bff": "yarn workspace @pd/bff lint",
+    "lint:api": "yarn workspace @pd/api lint",
     "tsc": "yarn tsc:front && yarn tsc:bff && yarn tsc:api",
     "tsc:front": "yarn workspace @pd/front tsc",
     "tsc:bff": "yarn workspace @pd/bff tsc",
     "tsc:api": "yarn workspace @pd/api tsc"
   },
   "pre-commit": [
-    "eslint",
+    "lint",
     "tsc"
   ],
   "private": true,
