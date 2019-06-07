@@ -1,0 +1,13 @@
+{
+  "extends": ["../../.eslintrc"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": false,
+      "codeFrame": true
+    }
+  },
+  "env": {
+    "node": true
+  }
+}

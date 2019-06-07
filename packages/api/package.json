@@ -1,0 +1,21 @@
+{
+  "name": "@pd/api",
+  "version": "0.0.1",
+  "description": "Personal diary API side",
+  "main": "index.js",
+  "author": "Andrei Tiurin <pd@ateiri.com>",
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "start:dev": "nodemon -e js --watch './src/*' --exec 'node --inspect=8998 -r ./.babel.register.js' ./src/index.js",
+    "lint": "eslint --ext .js ./src/*",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "config": "^3.1.0",
+    "express": "^4.17.1",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

@@ -10,6 +10,21 @@ Install dependencies by [Yarn](https://yarnpkg.com/en/docs/install)
 yarn
 ```
 
+## Development launch (Front & BFF & API)
+
+Please, for correct work of Google Auth, provide following environment variables:
+
+```
+export G_CLIENT_ID="YOUR_GOOGLE_CLIENT_ID"
+export G_CLIENT_SECRET="YOUR_GOOGLE_CLIENT_SECRET"
+```
+
+and then start development servers
+
+```
+yarn start:dev
+```
+
 ## Contribution
 
 **Community**  

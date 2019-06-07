@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react"
+  },
+  "files": ["./../../typing/index.d.ts"],
+  "include": ["./src/index.jsx"],
+  "exclude": ["node_modules", "*.scss"]
+}

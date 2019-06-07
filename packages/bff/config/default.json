@@ -1,0 +1,14 @@
+{
+  "bff": {
+    "port": 8081,
+    "statsPath": "@pd/front/.dist/react-loadable.json",
+    "manifestPath": "@pd/front/.dist/manifest.json",
+    "auth": {
+      "google": {
+        "authURL": "/auth/g",
+        "callbackURL": "/auth/g/cb",
+        "failureCallbackURL": "/auth/g/err"
+      }
+    }
+  }
+}

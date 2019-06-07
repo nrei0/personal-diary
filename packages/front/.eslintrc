@@ -1,0 +1,19 @@
+{
+  "extends": ["../../.eslintrc"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": false,
+      "codeFrame": true,
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/jsx-uses-react": 1,
+    "react/prop-types": 0
+  },
+  "globals": { "react": true },
+  "env": {
+    "browser": true
+  }
+}
