@@ -2,7 +2,7 @@
 
 For better development experience follow instructions to set up your environment.
 
-## Setup VSCode launch.json to debug server
+## Setup VSCode launch.json to debug BFF & API
 
 Add `.vscode/launch.json`
 
@@ -13,14 +13,21 @@ Add `.vscode/launch.json`
     {
       "type": "node",
       "request": "attach",
-      "name": "Debug server",
+      "name": "Debug BFF",
       "restart": true,
-      "sourceMaps": true
+      "sourceMaps": true,
+      "port": 8999
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Debug API",
+      "restart": true,
+      "sourceMaps": true,
+      "port": 8998
     }
   ]
 }
-
-
 ```
 
 ## Setup VSCode project / user settings & plugins
@@ -29,6 +36,7 @@ Add `.vscode/launch.json`
 
 - [ESlint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Stylelint](https://marketplace.visualstudio.com/items?itemName=shinnn.stylelint)
 
 **Set up project / user settings**
 
@@ -46,6 +54,7 @@ Add `.vscode/launch.json`
   "eslint.options": {
     "autofix": true
   },
+  "eslint.workingDirectories": ["src/front", "src/bff", "src/api"],
   "prettier.eslintIntegration": true,
   "prettier.tslintIntegration": false,
   "prettier.singleQuote": true,
