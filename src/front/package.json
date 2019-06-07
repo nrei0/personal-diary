@@ -5,12 +5,10 @@
   "main": "index.js",
   "author": "Andrei Tiurin <pd@ateiri.com>",
   "license": "BSD-3-Clause",
-  "private": false,
   "scripts": {
     "start:dev": "webpack-dev-server"
   },
   "dependencies": {
-    "@babel/runtime": "^7.4.5",
     "classnames": "^2.2.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

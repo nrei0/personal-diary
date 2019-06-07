@@ -1,7 +1,6 @@
 import Loadable from 'react-loadable';
 import express from 'express';
 import config from 'config';
-import path from 'path';
 
 import { createLogger } from './logger';
 import { univeralMiddleware, authMiddleware, setAuthRoutes } from './middleware';
@@ -23,6 +22,7 @@ const {
  * Stop server.
  *
  * @param {{ server: http.Server, logger: Logger }} props Props.
+ * @returns {NodeJS.SignalsListener}
  */
 export const stopServer = ({ server, logger }) => () => {
   server.close(() => {
@@ -34,6 +34,7 @@ export const stopServer = ({ server, logger }) => () => {
  * Start server.
  *
  * @param {{ process: NodeJS.Process }} props Props.
+ * @returns {function}
  */
 export const startServer = ({ process }) => () => {
   const app = express();

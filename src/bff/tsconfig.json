@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@pd/front/*": ["../front/*"]
+    }
+  },
+  "files": ["./../../typing/index.d.ts"],
+  "include": ["./index.js"],
+  "exclude": ["node_modules", "*.scss"]
+}

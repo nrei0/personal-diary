@@ -5,19 +5,33 @@
   "main": "index.js",
   "author": "Andrei Tiurin <pd@ateiri.com>",
   "license": "BSD-3-Clause",
-  "private": false,
+  "scripts": {
+    "start:dev": "nodemon -e js,jsx --watch '../front/*' --watch './*' --exec 'node --inspect=8999 -r ./.babel.register.js' index.js"
+  },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/runtime": "^7.4.5",
     "@hapi/joi": "^15.0.3",
-    "classnames": "^2.2.6",
+    "@pd/front": "0.0.1",
     "config": "^3.1.0",
     "express": "^4.17.1",
-    "forever": "^1.0.0",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-loadable": "^5.5.0",
     "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@types/config": "^0.0.34",
+    "@types/passport": "^1.0.0",
+    "@types/passport-google-oauth20": "^2.0.0",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-loadable": "^5.5.1",
+    "babel-plugin-css-modules-transform": "^1.6.2",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
+    "nodemon": "^1.19.1"
   }
 }

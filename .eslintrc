@@ -1,0 +1,53 @@
+{
+  "extends": ["airbnb"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "plugins": ["sort-class-members", "import", "no-null"],
+  "rules": {
+    "linebreak-style": 0,
+    "no-shadow": "off",
+    "no-param-reassign": "off",
+    "import/prefer-default-export": "off",
+    "import/no-default-export": 2,
+    "implicit-arrow-linebreak": 0,
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "never",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
+    "no-null/no-null": 2,
+    "no-mixed-operators": "off",
+    "no-confusing-arrow": "off",
+    "no-bitwise": "off",
+    "function-paren-newline": "off",
+    "object-curly-newline": "off",
+    "arrow-parens": "off",
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
+    "sort-class-members/sort-class-members": [
+      2,
+      {
+        "order": [
+          "[static-properties]",
+          "[static-methods]",
+          "[properties]",
+          "[conventional-private-properties]",
+          "constructor",
+          "[methods]",
+          "[conventional-private-methods]"
+        ],
+        "accessorPairPositioning": "getThenSet"
+      }
+    ]
+  },
+  "env": {
+    "es6": true
+  }
+}

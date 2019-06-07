@@ -1,0 +1,16 @@
+{
+  "extends": ["../../.eslintrc"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": false,
+      "codeFrame": true
+    },
+    "babelOptions": {
+      "configFile": "./src/api/.babelrc.js"
+    }
+  },
+  "env": {
+    "node": true
+  }
+}

@@ -1,15 +1,39 @@
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
-const _ = undefined;
+/**
+ * @typedef {import('express').Express} Express
+ * @typedef {import('express').RequestHandler} RequestHandler
+ */
 
+/**
+ * @typedef {Object} AuthMiddlewareProps
+ * @property {string} clientID Google client id.
+ * @property {string} clientSecret Google client secret.
+ * @property {string} callbackURL Google callback URL.
+ */
+
+/**
+ * @typedef {Object} SetAuthRoutesProps
+ * @property {Express} app Express app.
+ * @property {string} authURL Google auth route.
+ * @property {string} callbackURL Google callback url.
+ * @property {string} failureCallbackURL Google failure callback URL.
+ */
+
+/**
+ * Auth express middleware.
+ *
+ * @param {AuthMiddlewareProps} props Props.
+ * @returns {RequestHandler}
+ */
 export const authMiddleware = ({ clientID, clientSecret, callbackURL }) => {
   passport.serializeUser((user, done) => {
-    done(_, user);
+    done(undefined, user);
   });
 
   passport.deserializeUser((user, done) => {
-    done(_, user);
+    done(undefined, user);
   });
 
   passport.use(
@@ -19,13 +43,18 @@ export const authMiddleware = ({ clientID, clientSecret, callbackURL }) => {
         clientSecret,
         callbackURL
       },
-      (token, refreshToken, profile, done) => done(_, profile)
+      (token, refreshToken, profile, done) => done(undefined, profile)
     )
   );
 
   return passport.initialize();
 };
 
+/**
+ * Set auth routes for express app.
+ *
+ * @param {SetAuthRoutesProps} props Props.
+ */
 export const setAuthRoutes = ({ app, authURL, callbackURL, failureCallbackURL }) => {
   app.get(
     authURL,

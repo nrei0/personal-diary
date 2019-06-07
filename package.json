@@ -7,8 +7,8 @@
   "scripts": {
     "start": "forever .dist/bff/index.js",
     "start:dev": "yarn start:dev:bff & yarn start:dev:api & yarn start:dev:front",
-    "start:dev:bff": "BABEL_ENV=bff_dev forever -w -d -c 'node --inspect=8999 -r ./node_modules/@babel/register' src/bff/index.js",
-    "start:dev:api": "BABEL_ENV=api_dev forever -w -d -c 'node --inspect=8998 -r ./node_modules/@babel/register' src/api/index.js",
+    "start:dev:bff": "yarn workspace @pd/bff start:dev",
+    "start:dev:api": "yarn workspace @pd/api start:dev",
     "start:dev:front": "yarn workspace @pd/front start:dev",
     "eslint": "eslint --ext .js src/*",
     "tscheck": "tsc"
@@ -19,30 +19,16 @@
   ],
   "private": true,
   "workspaces": [
-    "./src/api",
-    "./src/bff",
-    "./src/front"
+    "src/*"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.2.0",
+    "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.6",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "7",
-    "@types/config": "^0.0.34",
-    "@types/express": "^4.16.1",
-    "@types/hapi__joi": "^15.0.1",
-    "@types/node": "^12.0.2",
-    "@types/ramda": "^0.26.8",
-    "@types/react-dom": "^16.8.4",
-    "@types/react-loadable": "^5.5.1",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
     "babel-eslint": "^11.0.0-beta.0",
-    "babel-plugin-css-modules-transform": "^1.6.2",
-    "babel-plugin-dynamic-import-node": "^2.2.0",
-    "babel-preset-minify": "^0.5.0",
     "eslint": "^5.10",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-react": "^1.1.7",
@@ -51,8 +37,8 @@
     "eslint-plugin-no-null": "^1.0.2",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-sort-class-members": "^1.4.0",
-    "nodemon": "^1.19.0",
     "pre-commit": "^1.2.2",
     "typescript": "^3.4.5"
-  }
+  },
+  "dependencies": {}
 }
