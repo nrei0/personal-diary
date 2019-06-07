@@ -6,7 +6,7 @@
   "author": "Andrei Tiurin <pd@ateiri.com>",
   "license": "BSD-3-Clause",
   "scripts": {
-    "start:dev": "nodemon -e js,jsx --watch '../front/*' --watch './src/*' --exec 'node --inspect=8999 -r ./.babel.register.js' ./src/index.js",
+    "start:dev": "nodemon -e js,jsx --watch '../front/src/*' --watch './src/*' --exec 'node --inspect=8999 -r ./.babel.register.js' ./src/index.js",
     "eslint": "eslint --ext .js,.jsx ./src/*",
     "tsc": "tsc"
   },

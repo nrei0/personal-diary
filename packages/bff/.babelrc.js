@@ -1,3 +1,4 @@
+const path = require('path');
 const rootBabelrc = require('../../.babelrc.js');
 
 module.exports = {
@@ -10,9 +11,10 @@ module.exports = {
     [
       'css-modules-transform',
       {
-        devMode: true,
+        devMode: false,
         extensions: ['.scss'],
-        generateScopedName: '[local]__[hash:base64:8]'
+        generateScopedName: '[local]__[hash:base64:8]',
+        rootDir: path.resolve(__dirname, '../front')
       }
     ]
   ],
