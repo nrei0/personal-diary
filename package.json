@@ -5,21 +5,26 @@
   "author": "Andrei Tiurin <pd@ateiri.com>",
   "license": "BSD-3-Clause",
   "scripts": {
-    "start": "forever .dist/bff/index.js",
     "start:dev": "yarn start:dev:bff & yarn start:dev:api & yarn start:dev:front",
     "start:dev:bff": "yarn workspace @pd/bff start:dev",
     "start:dev:api": "yarn workspace @pd/api start:dev",
     "start:dev:front": "yarn workspace @pd/front start:dev",
-    "eslint": "eslint --ext .js src/*",
-    "tscheck": "tsc"
+    "eslint": "yarn eslint:front && yarn eslint:bff && yarn eslint:api",
+    "eslint:front": "yarn workspace @pd/front eslint",
+    "eslint:bff": "yarn workspace @pd/bff eslint",
+    "eslint:api": "yarn workspace @pd/api eslint",
+    "tsc": "yarn tsc:front && yarn tsc:bff && yarn tsc:api",
+    "tsc:front": "yarn workspace @pd/front tsc",
+    "tsc:bff": "yarn workspace @pd/bff tsc",
+    "tsc:api": "yarn workspace @pd/api tsc"
   },
   "pre-commit": [
     "eslint",
-    "tscheck"
+    "tsc"
   ],
   "private": true,
   "workspaces": [
-    "src/*"
+    "packages/*"
   ],
   "devDependencies": {
     "@babel/core": "^7.4.5",

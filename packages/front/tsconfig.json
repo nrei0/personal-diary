@@ -10,6 +10,6 @@
     "jsx": "react"
   },
   "files": ["./../../typing/index.d.ts"],
-  "include": ["./index.jsx"],
+  "include": ["./src/index.jsx"],
   "exclude": ["node_modules", "*.scss"]
 }

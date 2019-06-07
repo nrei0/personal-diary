@@ -5,8 +5,7 @@ import { renderToString } from 'react-dom/server';
 import Loadable from 'react-loadable';
 import { getBundles } from 'react-loadable/webpack';
 
-// tbd @ateiri Not works, babel couldn't compile.
-import { App } from '@pd/front/component/app';
+import { App } from '@pd/front/src/component/app';
 
 /**
  * @typedef {import('express').Express} Express

@@ -1,9 +1,6 @@
 {
   "extends": ["airbnb"],
   "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 6
-  },
   "plugins": ["sort-class-members", "import", "no-null"],
   "rules": {
     "linebreak-style": 0,

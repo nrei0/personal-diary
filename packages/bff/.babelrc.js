@@ -1,8 +1,11 @@
-require('@babel/register')({
-  rootMode: 'upward',
+const rootBabelrc = require('../../.babelrc.js');
+
+module.exports = {
+  ...rootBabelrc,
   ignore: [/node_modules/],
-  presets: ['@babel/preset-react'],
+  presets: [...rootBabelrc.presets, '@babel/preset-react'],
   plugins: [
+    ...rootBabelrc.plugins,
     'dynamic-import-node',
     [
       'css-modules-transform',
@@ -14,4 +17,4 @@ require('@babel/register')({
     ]
   ],
   sourceMaps: true
-});
+};

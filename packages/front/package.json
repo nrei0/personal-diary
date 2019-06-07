@@ -6,7 +6,9 @@
   "author": "Andrei Tiurin <pd@ateiri.com>",
   "license": "BSD-3-Clause",
   "scripts": {
-    "start:dev": "webpack-dev-server"
+    "start:dev": "webpack-dev-server",
+    "eslint": "eslint --ext .js,.jsx ./src/*",
+    "tsc": "tsc"
   },
   "dependencies": {
     "classnames": "^2.2.6",

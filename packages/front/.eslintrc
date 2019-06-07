@@ -6,9 +6,6 @@
       "allowImportExportEverywhere": false,
       "codeFrame": true,
       "jsx": true
-    },
-    "babelOptions": {
-      "configFile": "./src/front/.babelrc.js"
     }
   },
   "rules": {
