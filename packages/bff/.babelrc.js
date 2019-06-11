@@ -7,7 +7,6 @@ module.exports = {
   presets: [...rootBabelrc.presets, '@babel/preset-react'],
   plugins: [
     ...rootBabelrc.plugins,
-    'dynamic-import-node',
     [
       'css-modules-transform',
       {
@@ -16,7 +15,8 @@ module.exports = {
         generateScopedName: '[local]__[hash:base64:8]',
         rootDir: path.resolve(__dirname, '../front')
       }
-    ]
+    ],
+    'react-loadable/babel'
   ],
   sourceMaps: true
 };

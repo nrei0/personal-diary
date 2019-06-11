@@ -15,7 +15,6 @@ module.exports = {
       {
         loose: false
       }
-    ],
-    '@babel/plugin-syntax-dynamic-import'
+    ]
   ]
 };

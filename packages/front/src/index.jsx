@@ -1,9 +1,8 @@
-import Loadable from 'react-loadable';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { App } from './component/app';
 
-Loadable.preloadReady().then(() => {
+document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.hydrate(<App />, document.getElementById('app'));
 });

@@ -1,4 +1,3 @@
-import Loadable from 'react-loadable';
 import express from 'express';
 import config from 'config';
 
@@ -44,10 +43,8 @@ export const startServer = ({ process }) => () => {
   setAuthRoutes({ app, authURL, callbackURL, failureCallbackURL });
   app.get('/', univeralMiddleware({ statsPath, manifestPath }));
 
-  Loadable.preloadAll().then(() => {
-    const server = app.listen(port, () => logger.info(`BFF listening on :${port}`));
+  const server = app.listen(port, () => logger.info(`BFF listening on :${port}`));
 
-    process.on('SIGINT', stopServer({ server, logger }));
-    process.on('SIGTERM', stopServer({ server, logger }));
-  });
+  process.on('SIGINT', stopServer({ server, logger }));
+  process.on('SIGTERM', stopServer({ server, logger }));
 };

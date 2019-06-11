@@ -32,7 +32,9 @@ export const univeralMiddleware = ({ statsPath, manifestPath }) => (_, res) => {
   const manifest = require(manifestPath);
 
   // Main app bundle is part of component chunks and not included here.
-  const scriptPaths = ['vendor.app.js', 'styles.js'].map(name => manifest[name]).filter(Boolean);
+  const scriptPaths = ['app.js', 'vendor.app.js', 'styles.js']
+    .map(name => manifest[name])
+    .filter(Boolean);
   const linkPaths = ['styles.css'].map(name => manifest[name]).filter(Boolean);
 
   const html = renderToString(

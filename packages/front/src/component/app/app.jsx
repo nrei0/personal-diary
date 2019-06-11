@@ -1,6 +1,8 @@
 import Loadable from 'react-loadable';
 import React from 'react';
 
+import './app.scss';
+
 import { AppShell } from '../app_shell';
 
 const AuthPage = Loadable({
