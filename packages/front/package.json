@@ -13,10 +13,10 @@
     "tsc": "tsc"
   },
   "dependencies": {
+    "@material-ui/core": "^4.2.1",
+    "@material-ui/icons": "^4.2.1",
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "react-router-config": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-text-input": "^0.0.8"
@@ -42,5 +42,9 @@
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.5.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   }
 }
