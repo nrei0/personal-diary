@@ -1,5 +1,4 @@
 const path = require('path');
-const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -74,7 +73,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new ReactLoadablePlugin({ filename: './.dist/react-loadable.json' }),
     new WebpackAssetsManifest({ output: './.dist/manifest.json' }),
     new BundleAnalyzerPlugin(),
     new MiniCssExtractPlugin({

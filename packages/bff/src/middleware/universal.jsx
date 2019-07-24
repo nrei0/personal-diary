@@ -2,10 +2,9 @@
 
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Loadable from 'react-loadable';
-import { getBundles } from 'react-loadable/webpack';
+import { StaticRouter } from 'react-router';
 
-import { App } from '@pd/front/src/component/app';
+import { renderApp } from '@pd/front/src';
 
 /**
  * @typedef {import('express').Express} Express
@@ -24,26 +23,20 @@ import { App } from '@pd/front/src/component/app';
  * @param {UniversalMiddlewareProps} props Props.
  * @returns {RequestHandler}
  */
-export const univeralMiddleware = ({ statsPath, manifestPath }) => (_, res) => {
-  /** @type {string[]} */
-  const modules = [];
-
-  const stats = require(statsPath);
+export const univeralMiddleware = ({ manifestPath }) => (req, res) => {
   const manifest = require(manifestPath);
 
-  // Main app bundle is part of component chunks and not included here.
   const scriptPaths = ['app.js', 'vendor.app.js', 'styles.js']
     .map(name => manifest[name])
     .filter(Boolean);
   const linkPaths = ['styles.css'].map(name => manifest[name]).filter(Boolean);
+  const staticContext = {};
 
   const html = renderToString(
-    <Loadable.Capture report={moduleName => modules.push(moduleName)}>
-      <App />
-    </Loadable.Capture>
+    <StaticRouter location={req.url} context={staticContext}>
+      {renderApp()}
+    </StaticRouter>
   );
-
-  const bundles = getBundles(stats, modules);
 
   res.set('Content-Type', 'text/html');
   res.send(`
@@ -58,7 +51,6 @@ export const univeralMiddleware = ({ statsPath, manifestPath }) => (_, res) => {
     </head>
     <body>
       <div id="app">${html}</div>
-      ${bundles.map(bundle => `<script src="/${bundle.file}"></script>`).join('\n')}
     </body>
   </html>
 `);

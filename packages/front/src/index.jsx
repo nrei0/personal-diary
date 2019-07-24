@@ -1,8 +1,14 @@
+import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { renderRoutes } from 'react-router-config';
 
-import { App } from './component/app';
+import { routes } from './routes';
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.hydrate(<App />, document.getElementById('app'));
-});
+export const renderApp = () => renderRoutes(routes);
+
+if (typeof window !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    ReactDOM.hydrate(<BrowserRouter>{renderApp()}</BrowserRouter>, document.getElementById('app'));
+  });
+}
