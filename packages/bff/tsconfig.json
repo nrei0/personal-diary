@@ -8,6 +8,7 @@
     "strict": true,
     "esModuleInterop": true,
     "jsx": "react",
+    "watch": false,
     "baseUrl": ".",
     "paths": {
       "@pd/front/*": ["../front/*"]
@@ -15,5 +16,6 @@
   },
   "files": ["./../../typing/index.d.ts"],
   "include": ["./src/index.js"],
-  "exclude": ["node_modules", "*.scss"]
+  "exclude": ["node_modules", "*.scss"],
+  "compileOnSave": false
 }

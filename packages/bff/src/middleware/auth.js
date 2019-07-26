@@ -1,4 +1,7 @@
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import passport from 'passport';
+import session from 'express-session';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 /**
@@ -17,6 +20,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
  * @typedef {Object} SetAuthRoutesProps
  * @property {Express} app Express app.
  * @property {string} authURL Google auth route.
+ * @property {string} logoutURL Logout route.
  * @property {string} callbackURL Google callback url.
  * @property {string} failureCallbackURL Google failure callback URL.
  */
@@ -51,11 +55,25 @@ export const authMiddleware = ({ clientID, clientSecret, callbackURL }) => {
 };
 
 /**
+ * Init authorization.
+ *
+ * @param {AuthMiddlewareProps & { app: Express }} props Props.
+ */
+export const initAuthorization = ({ app, clientID, clientSecret, callbackURL }) => {
+  app.use(cookieParser());
+  app.use(bodyParser.json());
+  // tbd @ateiri everybody know until you will not specify secret in envs...
+  app.use(session({ secret: 'nobody know my secrets', resave: false, saveUninitialized: false }));
+  app.use(authMiddleware({ clientID, clientSecret, callbackURL }));
+  app.use(passport.session());
+};
+
+/**
  * Set auth routes for express app.
  *
  * @param {SetAuthRoutesProps} props Props.
  */
-export const setAuthRoutes = ({ app, authURL, callbackURL, failureCallbackURL }) => {
+export const setAuthRoutes = ({ app, authURL, logoutURL, callbackURL, failureCallbackURL }) => {
   app.get(
     authURL,
     passport.authenticate('google', {
@@ -66,13 +84,20 @@ export const setAuthRoutes = ({ app, authURL, callbackURL, failureCallbackURL })
     })
   );
 
+  app.get(logoutURL, (req, res) => {
+    req.logout();
+    // tbd @ateiri no hard-code.
+    res.redirect('/');
+  });
+
   app.get(
     callbackURL,
     passport.authenticate('google', {
       failureRedirect: failureCallbackURL
     }),
     (req, res) => {
-      res.redirect('/');
+      // tbd @ateiri no hard-code.
+      res.redirect('/dashboard');
     }
   );
 };

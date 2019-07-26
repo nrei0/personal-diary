@@ -7,9 +7,11 @@
     "noEmit": true,
     "strict": true,
     "esModuleInterop": true,
-    "jsx": "react"
+    "jsx": "react",
+    "watch": false
   },
   "files": ["./../../typing/index.d.ts"],
   "include": ["./src/index.jsx"],
-  "exclude": ["node_modules", "*.scss"]
+  "exclude": ["node_modules", "*.scss"],
+  "compileOnSave": false
 }
