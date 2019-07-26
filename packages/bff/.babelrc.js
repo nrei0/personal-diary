@@ -15,8 +15,7 @@ module.exports = {
         generateScopedName: '[local]__[hash:base64:8]',
         rootDir: path.resolve(__dirname, '../front')
       }
-    ],
-    'react-loadable/babel'
+    ]
   ],
   sourceMaps: true
 };

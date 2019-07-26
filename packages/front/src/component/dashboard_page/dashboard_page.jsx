@@ -1,8 +1,8 @@
 import React from 'react';
 
 /**
- * Auth page.
+ * Dashboard page.
  *
  * @returns {React.FunctionComponentElement<any>}
  */
-export const AuthPage = () => <div>Auth page</div>;
+export const DashboardPage = () => <div>Dashboard page</div>;

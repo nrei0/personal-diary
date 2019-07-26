@@ -41,7 +41,7 @@ export const startServer = ({ process }) => () => {
 
   app.use(authMiddleware({ clientID, clientSecret, callbackURL }));
   setAuthRoutes({ app, authURL, callbackURL, failureCallbackURL });
-  app.get('/', univeralMiddleware({ statsPath, manifestPath }));
+  app.get('*', univeralMiddleware({ statsPath, manifestPath }));
 
   const server = app.listen(port, () => logger.info(`BFF listening on :${port}`));
 
