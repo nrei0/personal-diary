@@ -2,7 +2,7 @@ import express from 'express';
 import config from 'config';
 
 import { createLogger } from './logger';
-import { univeralMiddleware, authMiddleware, setAuthRoutes } from './middleware';
+import { univeralMiddleware, initAuthorization, setAuthRoutes } from './middleware';
 
 /** @typedef { import('http').Server } http.Server */
 /** @typedef { import('winston').Logger } Logger */
@@ -10,10 +10,10 @@ import { univeralMiddleware, authMiddleware, setAuthRoutes } from './middleware'
 // Settings.
 const {
   port,
-  statsPath,
+  frontConfig,
   manifestPath,
   auth: {
-    google: { clientID, authURL, callbackURL, failureCallbackURL, clientSecret }
+    google: { clientID, authURL, callbackURL, failureCallbackURL, clientSecret, logoutURL }
   }
 } = config.get('bff');
 
@@ -39,9 +39,10 @@ export const startServer = ({ process }) => () => {
   const app = express();
   const logger = createLogger({ process });
 
-  app.use(authMiddleware({ clientID, clientSecret, callbackURL }));
-  setAuthRoutes({ app, authURL, callbackURL, failureCallbackURL });
-  app.get('*', univeralMiddleware({ statsPath, manifestPath }));
+  initAuthorization({ app, clientID, clientSecret, callbackURL });
+  setAuthRoutes({ app, authURL, logoutURL, callbackURL, failureCallbackURL });
+
+  app.get('*', univeralMiddleware({ manifestPath, frontConfig }));
 
   const server = app.listen(port, () => logger.info(`BFF listening on :${port}`));
 

@@ -15,12 +15,15 @@
     "@babel/runtime": "^7.4.5",
     "@hapi/joi": "^15.0.3",
     "@pd/front": "0.0.1",
+    "@types/cookie-parser": "^1.4.1",
+    "@types/express-session": "^1.15.13",
+    "body-parser": "^1.19.0",
     "config": "^3.1.0",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
     "react-router-config": "^5.0.1",
     "winston": "^3.2.1"
@@ -35,5 +38,9 @@
     "babel-plugin-css-modules-transform": "^1.6.2",
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "nodemon": "^1.19.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   }
 }

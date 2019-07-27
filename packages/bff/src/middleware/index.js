@@ -1,4 +1,4 @@
 import { univeralMiddleware } from './universal';
-import { authMiddleware, setAuthRoutes } from './auth';
+import { setAuthRoutes, initAuthorization } from './auth';
 
-export { univeralMiddleware, authMiddleware, setAuthRoutes };
+export { univeralMiddleware, initAuthorization, setAuthRoutes };
