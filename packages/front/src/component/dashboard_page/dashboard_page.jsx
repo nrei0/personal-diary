@@ -1,12 +1,19 @@
-import React, { useContext } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Button, Container } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
+import React, { useContext } from "react";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Button,
+  Container
+} from "@material-ui/core";
+import { Menu } from "@material-ui/icons";
 
-import { ConfigContext } from '../../global_context';
-import { SignIn } from '../sign_in';
+import { ConfigContext } from "../../global_context";
+import { SignIn } from "../sign_in";
 
-import { authByGoogle, logout } from './dashboard_page.actions';
-import styles from './dashboard_page.scss';
+import { authByGoogle, logout } from "./dashboard_page.actions";
+import styles from "./dashboard_page.scss";
 
 /**
  * Dashboard page.
@@ -14,7 +21,9 @@ import styles from './dashboard_page.scss';
  * @returns {React.FunctionComponentElement<any>}
  */
 export const DashboardPage = () => {
-  const { googleAuthURL, googleLogoutURL, isLogged } = useContext(ConfigContext);
+  const { googleAuthURL, googleLogoutURL, isLogged } = useContext(
+    ConfigContext
+  );
 
   return (
     <>
@@ -24,12 +33,14 @@ export const DashboardPage = () => {
             <Menu />
           </IconButton>
           <Typography variant="h6">Dashboard</Typography>
-          <div className={styles['login-btn']}>
+          <div className={styles["login-btn"]}>
             <Button
               color="inherit"
-              onClick={isLogged ? logout(googleLogoutURL) : authByGoogle(googleAuthURL)}
+              onClick={
+                isLogged ? logout(googleLogoutURL) : authByGoogle(googleAuthURL)
+              }
             >
-              {isLogged ? 'Logout' : 'Login'}
+              {isLogged ? "Logout" : "Login"}
             </Button>
           </div>
         </Toolbar>
