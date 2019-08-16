@@ -2,3 +2,4 @@ node_modules/
 .dist/
 /.vscode
 *.log
+packages/bff/config/local.json
