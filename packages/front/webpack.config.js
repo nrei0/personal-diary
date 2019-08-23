@@ -1,3 +1,4 @@
+const fs = require("fs");
 const path = require("path");
 const WebpackAssetsManifest = require("webpack-assets-manifest");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -20,7 +21,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        exclude: /node_modul"s/,
         use: {
           loader: "babel-loader"
         }
@@ -96,7 +97,11 @@ module.exports = {
     disableHostCheck: true,
     writeToDisk: true,
     hot: false,
-    inline: false
+    inline: false,
+    https: {
+      key: fs.readFileSync('private.key'),
+      cert: fs.readFileSync('private.crt')
+    }
   },
   watch: true,
   watchOptions: {
